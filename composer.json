@@ -1,0 +1,21 @@
+{
+    "name": "arifh/check-task",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ariful-Hasan",
+            "email": "arifhasan.mbstu@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\":"app/"
+        },
+        "files": [
+            "app/config/constant.php"
+        ]
+    },
+    "require": {
+        "vlucas/phpdotenv": "^5.4"
+    }
+}
