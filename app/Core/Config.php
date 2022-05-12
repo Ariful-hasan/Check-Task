@@ -13,11 +13,11 @@ class Config implements ConfigInterface {
         $this->config = [
             'db' => [
                 [
-                    'driver' => $_env['DB_DRIVER'],
-                    'host' => $_env['DB_HOST'],
-                    'dbname' => $_env['DB_NAME'],
-                    'user' => $_env['DB_USER'],
-                    'password' => $_env['DB_PASSWORD'],
+                    DBDRIVER => $_env['DB_DRIVER'],
+                    DBHOST => $_env['DB_HOST'],
+                    DBNAME => $_env['DB_NAME'],
+                    DBUSER => $_env['DB_USER'],
+                    DBPASSWORD => $_env['DB_PASSWORD'],
                 ]
             ]
         ];
