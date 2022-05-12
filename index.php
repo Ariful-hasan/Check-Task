@@ -1,9 +1,9 @@
 <?php
 
-require_once __DIR__ . '/app/bootstrap.php';
+// require_once __DIR__ . '/app/bootstrap.php';
 
-use App\Core\App;
-use App\Validation\Validator;
+// use App\Core\App;
+// use App\Validation\Validator;
 
 
 /**
@@ -11,34 +11,68 @@ use App\Validation\Validator;
  */
 
  //db connection done.
-$db = App::db();
-var_dump($db);
+// $db = App::db();
+// var_dump($db);
 
 //validation done.
 $requests = [
     [
         'name' => 'Email',
         'value' => 'arif@',
-        'rules' => REQUIRED.'|'.EMAIL
+        'rules' => 'required'
     ],
 
     [
         'name' => 'Numeric',
         'value' => 123,
-        'rules' => REQUIRED.'|'.NUMERIC
+        'rules' => 'required'
     ],
 
     [
         'name' => 'Required',
         'value' => 'asas',
-        'rules' => REQUIRED
+        'rules' => 'required'
     ]
 ];
 
-$errors = [];
-try {
-    $errors = Validator::validate($requests);
-} catch (\Throwable $th) {
-    echo $th->getMessage().' - '.$th->getCode();
+// $errors = [];
+// try {
+//     $errors = Validator::validate($requests);
+// } catch (\Throwable $th) {
+//     echo $th->getMessage().' - '.$th->getCode();
+// }
+// print_r($errors);
+
+ function getFieldNames()
+{
+    global $requests;
+    $fields = [];
+    $values = [];
+    $data = [];
+    if (!empty($requests)) {
+        foreach ($requests as $request) {
+            $fields[] = $request['name'];
+            $data[] = $request['value'];
+            
+            $values[] = "?";
+        }
+    }
+    
+    $query = " (". implode("," ,$fields). ") ";
+    $query .= " VALUES (". implode("," ,$values). ") ";
+
+
+    var_dump($data);die;
+    var_dump($query);die;
+
+
 }
-print_r($errors);
+
+// getFieldNames();
+
+$cond = ["id" => 1, "title" => "sds"];
+
+foreach ($cond as $key => $value) {
+    var_dump($key);
+    var_dump($value);
+}
